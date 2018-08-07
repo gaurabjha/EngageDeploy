@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<PATCHING>
+	<EMAIL_LIST>
+		<EMAIL_ID>Gaurab.Jha@owens-minor.com</EMAIL_ID>
+		<EMAIL_ID>Rick.Johnson@owens-minor.com</EMAIL_ID>
+		<!--<EMAIL_ID>Terri.Campbell@owens-minor.com</EMAIL_ID> -->
+	</EMAIL_LIST>
+	<ENGAGEPACKAGE>
+		<PACKAGE>Setup_LucasOwensAndMinor.7.6.3.404.exe</PACKAGE>
+		<PACKAGE>Setup_LucasOwensAndMinor.7.6.2.368.exe</PACKAGE>
+		<PACKAGE>Setup_LucasOwensAndMinor.7.6.4.657.exe</PACKAGE>
+	</ENGAGEPACKAGE>
+
+	<NON_STANDARD_DIRECTORY>
+		<DC DCID="87">
+			<DIRECTORY>C:\Lucas_Setup</DIRECTORY>
+		</DC>
+	</NON_STANDARD_DIRECTORY>
+
+	<PATCHGROUP PATCHGROUPID="1S">
+		<DC DCID="98">
+			<ServerName>DC98NT12</ServerName>
+			<ServerName>DC98NT11</ServerName>
+			<ClusterService>DC98Lucas</ClusterService>
+			<SiteName>Chicago</SiteName>
+		</DC>
+		<DC DCID="50">
+			<ServerName>DC50NT12</ServerName>
+			<ServerName>DC50NT11</ServerName>
+			<ClusterService>DC50Lucas</ClusterService>
+			<SiteName>San Francisco</SiteName>
+		</DC>
+		<DC DCID="41">
+			<ServerName>OMPCMJEN001</ServerName>
+			<SiteName>Dallas</SiteName>
+		</DC>
+	</PATCHGROUP>
+
+	<PATCHGROUP PATCHGROUPID="2C">
+
+		<DC DCID="44">
+			<ServerName>OMPCMJEN001</ServerName>
+			<SiteName>Detroit</SiteName>
+		</DC>
+		<DC DCID="53">
+			<ServerName>OMPCMJEN001</ServerName>
+			<SiteName>Denver</SiteName>
+		</DC>
+		<DC DCID="57">
+			<ServerName>OMPCMJEN001</ServerName>
+			<SiteName>Austin</SiteName>
+		</DC>
+		<DC DCID="58">
+			<ServerName>OMPCMJEN001</ServerName>
+			<SiteName>Cleveland</SiteName>
+		</DC>
+		<DC DCID="84">
+			<ServerName>OMPCMJEN001</ServerName>
+			<SiteName>Raleigh</SiteName>
+		</DC>
+		<DC DCID="85">
+			<ServerName>OMPCMJEN001</ServerName>
+			<SiteName>Kansas City (85) and (12)</SiteName>
+		</DC>
+		<DC DCID="30">
+			<ServerName>OMPCMJEN002</ServerName>
+			<SiteName>Atlanta</SiteName>
+		</DC>
+
+		<DC DCID="37">
+			<ServerName>OMPCMJEN002</ServerName>
+			<SiteName>Philadelphia</SiteName>
+		</DC>
+		<DC DCID="49">
+			<ServerName>OMPCMJEN002</ServerName>
+			<SiteName>Harlingen</SiteName>
+		</DC>
+	</PATCHGROUP>
+
+	<PATCHGROUP PATCHGROUPID="3">
+
+		<DC DCID="56">
+			<ServerName>OMPCMJEN002</ServerName>
+			<SiteName>Jackson</SiteName>
+		</DC>
+		<DC DCID="66">
+			<ServerName>OMPCMJEN002</ServerName>
+			<SiteName>Minneapolis</SiteName>
+		</DC>
+		<DC DCID="68">
+			<ServerName>OMPCMJEN002</ServerName>
+			<SiteName>New Orleans</SiteName>
+		</DC>
+		<DC DCID="69">
+			<ServerName>OMPCMJEN002</ServerName>
+			<SiteName>Albuquerque</SiteName>
+		</DC>
+		<DC DCID="92">
+			<ServerName>OMPCMJEN002</ServerName>
+			<SiteName>Seattle</SiteName>
+		</DC>
+	</PATCHGROUP>
+
+	<PATCHGROUP PATCHGROUPID="4">
+		<DC DCID="14">
+			<ServerName>OMPCMJEN003</ServerName>
+			<SiteName>St Louis</SiteName>
+		</DC>
+		<DC DCID="48">
+			<ServerName>OMPCMJEN003</ServerName>
+			<SiteName>Des Moines (48) and (42)</SiteName>
+		</DC>
+		<DC DCID="51">
+			<ServerName>OMPCMJEN003</ServerName>
+			<SiteName>Houston (51) and (13)</SiteName>
+		</DC>
+		<DC DCID="67">
+			<ServerName>OMPCMJEN003</ServerName>
+			<SiteName>Memphis</SiteName>
+		</DC>
+		<DC DCID="78">
+			<ServerName>OMPCMJEN003</ServerName>
+			<SiteName>Pittsburgh</SiteName>
+		</DC>
+		<DC DCID="80">
+			<ServerName>OMPCMJEN003</ServerName>
+			<SiteName>Phoenix</SiteName>
+		</DC>
+		<DC DCID="81">
+			<ServerName>OMPCMJEN003</ServerName>
+			<SiteName>Indianapolis</SiteName>
+		</DC>
+		<DC DCID="89">
+			<ServerName>OMPCMJEN003</ServerName>
+			<SiteName>Balt/Wash</SiteName>
+		</DC>
+		<DC DCID="91">
+			<ServerName>OMPCMJEN003</ServerName>
+			<SiteName>Columbus</SiteName>
+		</DC>
+		<DC DCID="96">
+			<ServerName>OMPCMJEN003</ServerName>
+			<SiteName>Bangor</SiteName>
+		</DC>
+	</PATCHGROUP>
+
+	<PATCHGROUP PATCHGROUPID="5">
+		<DC DCID="16">
+			<ServerName>OMPCMJEN004</ServerName>
+			<SiteName>Tulsa</SiteName>
+		</DC>
+		<DC DCID="20">
+			<ServerName>OMPCMJEN004</ServerName>
+			<SiteName>Charlotte</SiteName>
+		</DC>
+		<DC DCID="45">
+			<ServerName>OMPCMJEN004</ServerName>
+			<SiteName>Ft. Lauderdale</SiteName>
+		</DC>
+		<DC DCID="59">
+			<ServerName>OMPCMJEN004</ServerName>
+			<SiteName>Jacksonville (59) and (07)</SiteName>
+		</DC>
+		<DC DCID="60">
+			<ServerName>OMPCMJEN004</ServerName>
+			<SiteName>Gainesville</SiteName>
+		</DC>
+		<DC DCID="64">
+			<ServerName>OMPCMJEN004</ServerName>
+			<SiteName>Knoxville</SiteName>
+		</DC>
+		<DC DCID="75">
+			<ServerName>OMPCMJEN004</ServerName>
+			<SiteName>Cincinnati</SiteName>
+		</DC>
+		<DC DCID="82">
+			<ServerName>OMPCMJEN004</ServerName>
+			<SiteName>Portland</SiteName>
+		</DC>
+		<DC DCID="90">
+			<ServerName>OMPCMJEN004</ServerName>
+			<SiteName>Salt Lake City</SiteName>
+		</DC>
+
+
+
+	</PATCHGROUP>
+
+</PATCHING>
