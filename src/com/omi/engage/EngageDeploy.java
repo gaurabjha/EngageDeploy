@@ -49,6 +49,21 @@ import javax.swing.event.ListSelectionListener;
 import com.omi.bean.DC;
 import com.omi.xml.ReadXmlConfig;
 
+
+
+/**
+ * @author 136373 / Gaurab Kumar Jha
+ * @Email : gaurabkjha@gmail.com
+ * 
+ */
+
+
+/*
+
+ * Main Class for the GUI
+ * 
+*/
+
 public class EngageDeploy {
 
 	private JFrame frame;
@@ -534,7 +549,7 @@ public class EngageDeploy {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String app = ((String) JOptionPane.showInputDialog(frame, "Open With", "Edit Configuration File",
-							JOptionPane.OK_CANCEL_OPTION, null, "notepad,notepad++".split(","), null)).trim();
+							JOptionPane.OK_CANCEL_OPTION, null, "notepad++,notepad".split(","), null)).trim();
 
 					Runtime.getRuntime().exec("cmd /c start " + app + " engage_deployment_config.xml ");
 

@@ -1,6 +1,15 @@
 package com.omi.bean;
 
-import java.util.Comparator;
+/**
+ * @author 136373 / Gaurab Kumar Jha
+ * @Email : gaurabkjha@gmail.com
+ * 
+ */
+
+/*
+ * 
+ * Bean Class to represent the each DC from the config File
+ */
 
 public class DC implements Comparable {
 	private int dcid;
@@ -67,4 +76,3 @@ public class DC implements Comparable {
 	}
 
 }
-

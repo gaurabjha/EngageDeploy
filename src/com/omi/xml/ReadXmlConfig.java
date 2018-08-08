@@ -19,17 +19,21 @@ import org.xml.sax.SAXException;
 
 import com.omi.bean.DC;
 
+/**
+ * @author 136373 / Gaurab Kumar Jha
+ * @Email : gaurabkjha@gmail.com
+ * 
+ */
+
+/*
+ * Util Class to read the Configuration/XML file which acts as a database for
+ * our application
+ * 
+ */
+
 public class ReadXmlConfig {
-	/*
-	 * public static void main(String argv[]) {
-	 * 
-	 * ReadXmlConfig config = new ReadXmlConfig();
-	 * 
-	 * System.out.println(config.method("DC"));
-	 * System.err.println(config.method("PATCHGROUP"));
-	 * 
-	 * }
-	 */
+
+	// Parse the XML Document
 
 	public static Document getDocument() {
 		try {
@@ -55,6 +59,7 @@ public class ReadXmlConfig {
 		return null;
 	}
 
+	// Get all the Patch Group IDs available in the Config File
 	public List<String> getAllPatchGroupID() {
 		List<String> patchGroupIdList = new ArrayList<String>();
 		Document doc = getDocument();
@@ -72,6 +77,7 @@ public class ReadXmlConfig {
 		return patchGroupIdList;
 	}
 
+	// Get the Available Package Name from the Config File
 	public List<String> getPackageNames() {
 		List<String> packages = new LinkedList<String>();
 		Document doc = getDocument();

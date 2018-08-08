@@ -25,9 +25,9 @@ $mailto = $config_xml.PATCHING.EMAIL_LIST.EMAIL_ID
 
 #Log function
 function log ($string){
-    $log = "$(Get-Date) == $string"
-    Write-Host $log
-    add-content -Path $LogFileName -Value $log -Force
+    $log_string = "$(Get-Date) == $string"
+    Write-Host $log_string
+    add-content -Path $LogFileName -Value $log_string -Force
 }
 
 #Mail and Logging function with exit command
@@ -64,7 +64,19 @@ function disableService($paramDCID, $paramServer){
 		    if(Test-Connection $paramServer)
 		    {
 			    #log "[DEBUG] Validated connection to $paramServer, moving forward"
-			    Get-Service -Name $currentService -ComputerName $paramServer | Stop-Service -Force
+                
+                #Change The Recovery Option
+                $serverPath = "\\" + $paramServer
+		        sc.exe $serverPath failure $currentService actions= ////// reset= 0
+
+                #Stop the Service
+			    $ProcessID=get-wmiobject win32_service  -ComputerName $paramServer | where { $_.name -eq $currentService }
+                Invoke-Command -ComputerName $paramServer -ScriptBlock {
+                    param($paramProcessID )
+                    Stop-Process -ID $paramProcessID -Force
+                } -ArgumentList $ProcessID.ProcessId
+
+                #Validation
 			    Start-Sleep $interval
 			    $current = Get-Service -Name $currentService -ComputerName $paramServer
 
@@ -140,14 +152,14 @@ function getRunningLucasService($paramDCID , $paramServer){
                 if($current){
 			        if($current.Status -match "Running")
 			        {
-                        Write-Host "Service Installed : " $currentService 
+                        log "Service Installed : " $currentService 
 				        $count = $count+1;
 			        }else{
-                        Write-Host "Service failed to Start : " $currentService 
+                        log "Service Exists, but not Started : " $currentService 
                     }
                 }else{
-                    write-host "Service not Installed : ${currentService}" 
-                     $count = $count-1;
+                    log "Service Removed : ${currentService}" 
+                    $count = $count-1;
                 } 
 		    }else
 		    {
@@ -267,11 +279,9 @@ function installLucas($paramDCID, $paramServer, $software){
         if($software -eq $newLucasSoftware){
             Invoke-Command -ComputerName $paramServer -ScriptBlock { 
                 param($lucasHome , $software)
-                
                 Move-Item  -path "${lucasHome}\$software"  -destination "${lucasHome}\archive\$software"
-                log "Archived package : ${software}"
-
             } -ArgumentList "$lucasHome","$currentLucasSoftware"  
+            log "[INFO] Archived package : ${software}"
         }
     }else{
 		sendMail("[ERR] unable to connect DC ${paramDCID}@${paramServer} to Install") 
@@ -290,6 +300,7 @@ function deployCluster([Object]$paramDC){
     }else{
         $serverForOwnerTest=$paramDC.ServerName[0]     
     }
+
     $ownerNode=Invoke-Command -ComputerName $serverForOwnerTest -ScriptBlock {import-module FailoverClusters; $ClusterService=$args[0];(Get-ClusterGroup  $ClusterService).OwnerNode.Name} -argumentlist $paramDC.ClusterService
 
     #Get nonOwnerNode
@@ -357,7 +368,7 @@ function deployCluster([Object]$paramDC){
             
             }elseif($clusterTarget.Trim().ToUpper() -eq $nonOwnerNode.Trim().ToUpper() ){ #if non owner is selected
                 
-                 #Validate the Packages on non owner
+                #Validate the Packages on non owner
                 packageValidate  $paramDC.DCID $nonOwnerNode $currentLucasSoftware
 
                 #Stop Services on non Owner
@@ -527,7 +538,7 @@ function deployLucas([Object]$paramDC){
 
         $scriptname = "EngageDeploy" + $paramDC.DCID
         #Write-Host "current DC from deployLucas " $paramDC.DCID
-        log("=============================================================================================================")
+        
         
         if($paramDC.ServerName.Count -gt 1){
             deployCluster $paramDC
@@ -560,6 +571,7 @@ function main(){
                     log("[INFO] Begin Activity  - DC : "+$deployDC.DCID)
                     deployLucas $deployDC
                     log("[INFO] End Activity  - DC : "+$deployDC.DCID)
+                    log("=============================================================================================================")
                 }
             }
             else{
